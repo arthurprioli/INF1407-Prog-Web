@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Contatos</title>
+    {% include 'contatos/links.html' %}
+</head>
+<body>
+    {% include 'contatos/links.html' %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit"></button>
+    </form>
+</body>
+</html>

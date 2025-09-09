@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-3*9e*u^$87)9@_2$-a(+uabe6xs4yo^8zb1s+#lze_clv7jv%@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'your-domain.com']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "AppExemplo"
+    "AppExemplo",
+    "contatos",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost:8000",
+]
