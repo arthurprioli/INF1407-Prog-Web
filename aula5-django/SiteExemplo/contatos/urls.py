@@ -11,5 +11,7 @@ urlpatterns = [
     path('cadastro/', views.insereContatosView.as_view(),
         name='cria-contato'),
     path('update/<int:pk>', views.updateContatosView.as_view(),
-        name='atualiza-contato')
+        name='atualiza-contato'),
+    path('delete/<int:pk>', views.deleteContatosView.as_view(),
+        name='exclui-contato')
 ]

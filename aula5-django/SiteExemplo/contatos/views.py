@@ -49,3 +49,14 @@ class updateContatosView(View):
         else:
             contexto = {'pessoa': formulario, 'mensagem': 'Preenche direito jumento!'}
             return render(req, 'contatos/atualizaContato.html', contexto)
+
+class deleteContatosView(View):
+    def get(self, req, pk, *args, **kwargs):
+        pessoa = Pessoa.objects.get(pk=pk)
+        contexto = {'pessoa': pessoa}
+        return render(req, 'contatos/excluiContato.html', contexto)
+    
+    def post(self, req, pk, *args, **kwargs):
+        pessoa = Pessoa.objects.get(pk=pk)
+        pessoa.delete()
+        return HttpResponseRedirect(reverse_lazy('contatos:lista-contatos'))
