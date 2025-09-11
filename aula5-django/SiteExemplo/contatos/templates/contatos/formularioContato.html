@@ -1,0 +1,9 @@
+<form action="" method="post">
+        <fieldset style="width: max-content">
+            {% csrf_token %}
+            <table class="formulario">
+                {{ form.as_table }}
+            </table>
+            <button type="submit" class="btn btn-primary">Cadastrar pessoa</button>
+        </fieldset>
+    </form>

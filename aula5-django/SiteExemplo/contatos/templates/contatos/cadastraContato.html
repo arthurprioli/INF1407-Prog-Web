@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Contatos</title>
-    {% include 'contatos/links.html' %}
+    {% include 'contatos/header.html' %}
 </head>
 <body>
+    <h1>Cadastro de Contato</h1>
     {% include 'contatos/links.html' %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_div }}
-        <button type="submit"></button>
-    </form>
+    {% include 'contatos/formularioContato.html'%}
 </body>
 </html>

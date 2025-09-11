@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualização de Contato</title>
+    {% include 'contatos/header.html' %}
+</head>
+<body>
+    {% include 'contatos/links.html' %}
+    <h1>Atualização de Contato</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ pessoa.as_table }}
+            <td><input type="submit" value="Atualiza"></input></td>
+        </table>
+    </form>    
+</body>
+</html>

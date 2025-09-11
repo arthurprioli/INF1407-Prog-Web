@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from contatos.models import Pessoa
 from contatos.forms import ContatoModel2Form
 from django.http.response import HttpResponseRedirect
@@ -28,3 +28,24 @@ class insereContatosView(View):
             contato = formulario.save()
             contato.save()
             return HttpResponseRedirect(reverse_lazy('contatos:lista-contatos'))
+        else:
+            contexto = {'form': formulario, 'mensagem': 'Preenche direito jumento!'}
+            return render(req, 'contatos/cadastraContato.html', contexto)
+        
+class updateContatosView(View):
+    def get(self, req, pk, *args, **kwargs):
+        pessoa = Pessoa.objects.get(pk=pk)
+        formulario = ContatoModel2Form(instance=pessoa)
+        contexto = {'pessoa': formulario}
+        return render(req, 'contatos/atualizaContato.html', contexto)
+    
+    def post(self, req, pk, *args, **kwargs):
+        pessoa = get_object_or_404(Pessoa, pk=pk)
+        formulario = ContatoModel2Form(req.POST, instance=pessoa)
+        if formulario.is_valid():
+            pessoa = formulario.save()
+            pessoa.save()
+            return HttpResponseRedirect(reverse_lazy('contatos:lista-contatos'))
+        else:
+            contexto = {'pessoa': formulario, 'mensagem': 'Preenche direito jumento!'}
+            return render(req, 'contatos/atualizaContato.html', contexto)
