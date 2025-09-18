@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block titulo %}{% endblock %}</title>
+        
+        <link rel="stylesheet"
+        href="{% static 'MeuSite/css/estilo.css' %}">
+    </head>
+    <body>
+        <h1>Site Seguro</h1>
+        <div>
+        <a href="{% url 'home-sec' %}">
+        Página inicial de segurança
+        </a>
+        {% if not user.is_authenticated %}
+        | <a href="{% url 'registro-sec' %}">Registra</a>
+        {% endif %}
+        | Você é {% firstof user.username "visitante" %}
+        </div>
+        <hr>
+        {% block conteudo %}{% endblock %}
+    </body>
+</html>
